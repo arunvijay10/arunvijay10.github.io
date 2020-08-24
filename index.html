@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <form method="post">
+    <form id=submit-form method="post" action="">
         <h4><label for="Name">Name</label></h4>
         <input type="text" name="name" id="name" required>
         <h4><label for="email">Email</label></h4>
@@ -18,5 +19,25 @@
         height: 41px;margin-top: 20px;margin-left: 1px;text-align: center;
         background: lightyellow;">submit</button>
     </form>
+
+    <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbx7j8ty0b35bRdPoFrwN5TXvJ0Ljx_sz1DqHLY3/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 </body>
 </html>
